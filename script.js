@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = document.getElementById('game-board');
     const resultDiv = document.getElementById('result');
 
+    let currentBet = 0; // ✅ ДОБАВЛЕНО
+
     startBtn.onclick = async () => {
         const bombs = parseInt(bombsSelect.value);
         const bet = parseInt(betInput.value);
@@ -25,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        currentBet = bet; // ✅ СОХРАНЯЕМ СТАВКУ
+
         try {
-            // 🔹 ЗАМЕНИ ЭТОТ URL НА СВОЙ С RAILWAY
             const response = await fetch('https://miner-backend1-production-c91c.up.railway.app/start_game', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -65,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!gameData) return;
 
         try {
-            // 🔹 ЗАМЕНИ ЭТОТ URL НА СВОЙ С RAILWAY
+            // ✅ ПЕРЕДАЁМ ТЕКУЩУЮ СТАВКУ
             const response = await fetch('https://miner-backend1-production-c91c.up.railway.app/open_cell', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -75,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     field: gameData.field,
                     step: currentStep,
                     bombs: gameData.bombs,
-                    user_id: webApp.initDataUnsafe?.user?.id || 123456
+                    user_id: webApp.initDataUnsafe?.user?.id || 123456,
+                    bet: currentBet // ✅ ДОБАВЛЕНО
                 })
             });
 
@@ -120,4 +124,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
