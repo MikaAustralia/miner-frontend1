@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 🔹 ЗАМЕНИ ЭТОТ URL НА СВОЙ С RAILWAY
-            const response = await fetch('https://твой-бэкенд.up.railway.app/start_game', {
+            const response = await fetch('https://miner-backend1-production-c91c.up.railway.app/start_game', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 🔹 ЗАМЕНИ ЭТОТ URL НА СВОЙ С RAILWAY
-            const response = await fetch('https://твой-бэкенд.up.railway.app/open_cell', {
+            const response = await fetch('https://miner-backend1-production-c91c.up.railway.app/open_cell', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -120,3 +120,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
